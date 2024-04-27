@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StoreAPI.Data;
 using StoreAPI.Models;
 
 namespace StoreAPI.Controllers;
 
+[Authorize] // กำหนดให้ต้อง login ก่อนเข้าถึง API ทั้งหมด
+//[Authorize(Roles = UserRoles.Admin)] // กำหนดให้เฉพาะ Admin เท่านั้นที่สามารถเข้าถึง API นี้
 [ApiController]
 [Route("api/[controller]")]
 public class ProductController : ControllerBase
@@ -24,7 +27,8 @@ public class ProductController : ControllerBase
         _env = env;
     }
 
-        // ทดสอบเขียนฟังก์ชันการเชื่อมต่อ database
+    [AllowAnonymous]
+    // ทดสอบเขียนฟังก์ชันการเชื่อมต่อ database
     // GET: /api/Product/testconnectdb
     [HttpGet("testconnectdb")]
     public void TestConnection()

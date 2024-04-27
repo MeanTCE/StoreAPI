@@ -12,7 +12,7 @@ using StoreAPI.Data;
 namespace StoreAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240406173857_auth")]
+    [Migration("20240409161304_auth")]
     partial class auth
     {
         /// <inheritdoc />
